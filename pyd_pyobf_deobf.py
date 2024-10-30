@@ -1,41 +1,45 @@
 #!/bin/python3
-__import__('sys').setrecursionlimit(1000000000) 
 
-# obfuscate variable
-# pyobfuscate = ()  # replace pyobfuscate var
-# or
-# obfuscate = ""
+## https://pyobfuscate.com/pyd
+# Stop do shit thing
 
-### DEOBFUSCATE
-import hashlib
-from base64 import b85decode as b85
-from Crypto.Cipher import AES
-from Crypto.Util.Padding import unpad
-try:
-    if not 'exec' == pyobfuscate[0][1]:
-        print('Try Another Method :)')
-        input('Press Enter to Exit')
-        exit()
-    try:
+class compile:
+    def __init__(self):
         try:
-            def a(i):
-                return unpad(AES.new(hashlib.sha256(str(list(pyobfuscate)[0][0] + list(pyobfuscate)[1][0]).encode()).digest()[:24], AES.MODE_CBC, i[:AES.block_size]).decrypt(i[AES.block_size:]), AES.block_size).decode()
-            print(a(pyobfuscate[1][2]))
+            __import__('builtins').ㅤ = __import__('builtins').exec.ㅤ[0]
         except:
-            def a(i):
-                return unpad(AES.new(hashlib.sha256(str(list(pyobfuscate)[0][0] + list(pyobfuscate)[1][0][:-1]).encode()).digest()[:24], AES.MODE_CBC, i[:AES.block_size]).decrypt(i[AES.block_size:]), AES.block_size).decode()
-            print(a(pyobfuscate[1][2]))
-    except ValueError as e:
-        print(e)
-        input('Press Enter to Exit')
-        exit()
-except:
-    def a(i, j):
-        i = b85(i)
-        j, c = b(j, i[:8])
-        return AES.new(j, AES.MODE_CFB, c).decrypt(i[8:]).decode()
+            __import__('builtins').ㅤ = __import__('builtins').exec
 
-    def b(i, j):
-        k = hashlib.pbkdf2_hmac('sha256', i.encode(), j, 100000)
-        return (k[:16], k[16:])
-    print(a(list(obfuscate.values())[0], list(obfuscate.keys())[0][1:-1]))
+        for ㅤ in dir(__import__('builtins').compile):
+            try:
+                __import__('builtins').ㅤ("self.{0} = __import__('builtins').compile.{0}".format(str(ㅤ)), {'self': self})
+            except AttributeError:
+                pass
+        self.ㅤ = [vars(__import__('builtins')).copy()['compile'], 0]
+        self.__dir__ = self.ㅤ[0].__dir__
+        try:
+            del __import__('builtins').ㅤ
+        except:
+            pass
+        return None
+    
+    def __repr__(self):
+        return str(self.ㅤ[0])
+
+    def __call__(self, *args, **kwargs):
+        print(eval(__import__('ast').unparse(args[0])[4:]))
+        exit(0)
+
+    @property
+    def __dict__(self):
+        return self.ㅤ[0].__dict__
+    @property
+    def __class__(self):
+        return self.ㅤ[0].__class__
+
+compile = compile()
+__import__('builtins').compile = compile
+
+file = open(input(">> input file path: "), 'rb').read()
+print('>> source code: ')
+exec(file)
